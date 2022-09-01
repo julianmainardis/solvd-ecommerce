@@ -1,15 +1,23 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateExampleDto } from './dto/create-example.dto';
 import { UpdateExampleDto } from './dto/update-example.dto';
+import { Example } from './entities/example.entity';
 
 @Injectable()
 export class ExamplesService {
+  constructor(
+    @InjectRepository(Example)
+    private examplesRepository: Repository<Example>,
+  ) {}
+
   create(createExampleDto: CreateExampleDto) {
     return 'This action adds a new example';
   }
 
   findAll() {
-    return `This action returns all examples`;
+    return this.examplesRepository.find();
   }
 
   findOne(id: number) {
