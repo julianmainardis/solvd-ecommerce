@@ -13,7 +13,7 @@ import { ExamplesModule } from './examples/examples.module';
       username: 'root',
       password: 'asdf1234',
       database: 'solvd_ecommerce',
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      entities: [__dirname + '/**/**/*.entity{.ts,.js}'],
       migrations: [__dirname + '/../migrations/*{.ts,.js}'],
       synchronize: false,
     }),
